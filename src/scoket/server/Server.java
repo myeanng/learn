@@ -11,7 +11,7 @@ import java.net.Socket;
  * 
  * @author Administrator 2016-4-26 14:04:10
  */
-public class Server extends Thread {
+public class Server{
 
 	private int prot;
 
@@ -39,7 +39,7 @@ public class Server extends Thread {
 		try {
 			server = new ServerSocket(prot);
 			// 设置超时
-			server.setSoTimeout(1000);
+			//server.setSoTimeout(1000);
 		} catch (IOException e) {
 			System.out.println(e.toString());
 			e.printStackTrace();

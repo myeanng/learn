@@ -5,18 +5,15 @@ public class ThreadImpl extends Thread {
 	@SuppressWarnings("static-access")
 	@Override
 	public void run() {
-		System.out.println("Ïß³ÌÃû³ÆÎª£º" + this.getName());
-		System.out.println("Æô¶¯Ïß³Ì£º" + this.getName());
-		for (; GlobalImpl.num < 10;) {
+		System.out.println("å¯åŠ¨çº¿ç¨‹ï¼š" + this.getName());
+		for (int i = 0; i < 10;) {
 			try {
+				System.out.println(this.getName() + " GlobalImpl.num:" + (i = GlobalImpl.getNum()));
 				this.sleep(1000);
-				 GlobalImpl.num++;
-				System.out.println(this.getName()+" GlobalImpl.num:" + GlobalImpl.num);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 

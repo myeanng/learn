@@ -10,8 +10,8 @@ public class ThreadMain {
 		t1=new ThreadImpl(t1, "t1111111Thread");
 		ThreadImpl t2 = null;
 		t2=new ThreadImpl(t2, "t2222222Thread");
-		t1.setPriority(1);
-		t2.setPriority(9);
+		t1.setPriority(9);
+		t2.setPriority(1);
 		t1.start();
 		t2.start();
 	}

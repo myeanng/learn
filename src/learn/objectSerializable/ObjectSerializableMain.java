@@ -8,13 +8,13 @@ import java.io.ObjectOutputStream;
 public class ObjectSerializableMain {
 
 	public static void main(String[] args) throws Exception {
-		//ĞòÁĞ»¯
+		//åºåˆ—åŒ–
 		TestObject sto=new TestObject();
-		sto.setName("²âÊÔĞòÁĞ»¯");
+		sto.setName("æµ‹è¯•åºåˆ—åŒ–");
 		sto.setId(1);
-		sto.setArrt("ĞòÁĞ»¯ÊôĞÔ");
+		sto.setArrt("æµ‹è¯•å±æ€§");
 		set(sto);
-		//·´ĞòÁĞ»¯
+		//ååºåˆ—åŒ–
 		TestObject gto=(TestObject) get();
 		System.out.println("NAME:"+gto.getName());
 		System.out.println("ID:"+gto.getId());
@@ -23,24 +23,24 @@ public class ObjectSerializableMain {
 	}
 
 	private static void set(Object obj) throws Exception{
-		System.out.println("ĞòÁĞ»¯£ºBEGIN");
+		System.out.println("åºåˆ—åŒ–BEGIN");
 		FileOutputStream fout=new FileOutputStream("E:\\myClass.ser");
 		ObjectOutputStream oout=new ObjectOutputStream(fout);
 		oout.writeObject(obj);
 		oout.close();
 		fout.close();
-		System.out.println("ĞòÁĞ»¯£ºEND");
+		System.out.println("åºåˆ—åŒ–END");
 	}
 	
 	private static Object get() throws Exception{
-		System.out.println("·´ĞòÁĞ»¯£ºBEGIN");
+		System.out.println("ååºåˆ—åŒ–BEGIN");
 		Object o=null;
 		FileInputStream fin=new FileInputStream("E:\\myClass.ser");
 		ObjectInputStream oin=new ObjectInputStream(fin);
 		o=oin.readObject();
 		oin.close();
 		fin.close();
-		System.out.println("·´ĞòÁĞ»¯£ºEND");
+		System.out.println("ååºåˆ—åŒ–END");
 		return o;
 	}
 }

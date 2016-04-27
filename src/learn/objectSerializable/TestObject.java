@@ -7,7 +7,7 @@ public class TestObject implements Serializable{
 	
 	private String name;
 	private int id;
-	//不进行序列化属性
+	//闈炲簭鍒楀寲
 	private transient String arrt;
 	
 	public String method(){

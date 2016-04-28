@@ -2,7 +2,9 @@ package email.impl;
 
 import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -24,16 +26,16 @@ public class EmailImpl {
 		// set Subject
 		message.setSubject(subject);
 		// set text
-		/*message.setText(text);
-		Transport.send(message);*/
+		message.setText(text);
+		Transport.send(message);
 		/*InternetAddress toAdd = new InternetAddress(to);
 		InternetAddress[] adds={toAdd};
 		Transport.send(message, adds);*/
-		Transport transport = session.getTransport("smtp");  
+		/*Transport transport = session.getTransport("smtp");  
         transport.connect("smtp.sina.com",  "myeanng@sina.com", "meng2720036"); 
         InternetAddress toAdd = new InternetAddress(to);
 		InternetAddress[] adds={toAdd};
-        transport.sendMessage(message, adds);
+        transport.sendMessage(message, adds);*/
 		System.out.println("发送完成~");
 		return "";
 	}
@@ -46,20 +48,27 @@ public class EmailImpl {
 		// 系统属性
 		Properties properties = System.getProperties();
 		// 设置邮件服务器
-		//properties.put("mail.transport.protocol", "smtp");
-		properties.put("mail.pop.host", "pop.sina.com");  
-		//properties.setProperty("mail.host", "smtp.qq.com");
-		properties.setProperty("mail.smtp.host", "smtp.sina.com");//"smtp.sina.com.cn"
+		properties.put("mail.pop.host", "pop.sina.com.cn");  
+		properties.setProperty("mail.smtp.host", "smtp.sina.com.cn");//"smtp.sina.com.cn"
 		properties.setProperty("mail.transport.protocol", "smtp");
 		properties.put("mail.smtp.auth", "true");
 		//ssl
 		properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		properties.setProperty("mail.smtp.port", "465");
 		properties.setProperty("mail.smtp.socketFactory.port", "465");
+		
 		//properties.setProperty("mail.user", "630316085@qq.com");
 		//properties.setProperty("mail.password", "meng2720036@@");
 		// 获取默认的session对象
-		this.session = Session.getDefaultInstance(properties);
+		//this.session = Session.getDefaultInstance(properties);
+		// 获取默认session对象
+	      this.session = Session.getDefaultInstance(properties,new Authenticator(){
+		    public PasswordAuthentication getPasswordAuthentication()
+		    {
+		     return new PasswordAuthentication("myeanng@sina.com", "meng2720036"); //发件人邮件用户名、密码
+		    }
+		   });
+
 		// 创建默认的MimeMessage对象
 		this.message = new MimeMessage(session);
 		// 设置头部信息

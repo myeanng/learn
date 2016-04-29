@@ -32,7 +32,7 @@ public class EmailImpl {
 		InternetAddress[] adds={toAdd};
 		Transport.send(message, adds);*/
 		/*Transport transport = session.getTransport("smtp");  
-        transport.connect("smtp.sina.com",  "myeanng@sina.com", "meng2720036"); 
+        transport.connect("smtp.sina.com",  "myeanng@sina.com", "******"); 
         InternetAddress toAdd = new InternetAddress(to);
 		InternetAddress[] adds={toAdd};
         transport.sendMessage(message, adds);*/
@@ -56,16 +56,13 @@ public class EmailImpl {
 		properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		properties.setProperty("mail.smtp.port", "465");
 		properties.setProperty("mail.smtp.socketFactory.port", "465");
-		
-		//properties.setProperty("mail.user", "630316085@qq.com");
-		//properties.setProperty("mail.password", "meng2720036@@");
 		// 获取默认的session对象
 		//this.session = Session.getDefaultInstance(properties);
 		// 获取默认session对象
 	      this.session = Session.getDefaultInstance(properties,new Authenticator(){
 		    public PasswordAuthentication getPasswordAuthentication()
 		    {
-		     return new PasswordAuthentication("myeanng@sina.com", "meng2720036"); //发件人邮件用户名、密码
+		     return new PasswordAuthentication("myeanng@sina.com", "******"); //发件人邮件用户名、密码
 		    }
 		   });
 

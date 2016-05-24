@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	You under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true" version="3.0">
+  <display-name>Welcome to Tomcat</display-name>
+  <description>
+     Welcome to Tomcat
+  	</description>
+  	<!-- servlet注入 -->
+  <servlet>
+    <servlet-name>myRedirectServlet</servlet-name>
+    <servlet-class>servlet.myRedirectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>myFirstServlet</servlet-name>
+    <servlet-class>servlet.myFirstServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>errorHandler</servlet-name>
+    <servlet-class>servlet.ErrorHandler</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Refresh</servlet-name>
+    <servlet-class>servlet.Refresh</servlet-class>
+  </servlet>
+  <!-- servlet路径配置 -->
+  <servlet-mapping>
+    <servlet-name>myRedirectServlet</servlet-name>
+    <url-pattern>/myRedirectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>myFirstServlet</servlet-name>
+    <url-pattern>/myFirstServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>errorHandler</servlet-name>
+    <url-pattern>/errorHandler</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Refresh</servlet-name>
+    <url-pattern>/Refresh</url-pattern>
+  </servlet-mapping>
+  <!-- 过滤器注入 -->
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>filter.myFilter</filter-class>
+    <init-param>
+      <param-name>test-param</param-name>
+      <param-value>Initialization Paramter</param-value>
+    </init-param>
+  </filter>
+  <!-- 过滤器配置 -->
+  <filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- 报错页配置 -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errorHandler</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/errorHandler</location>
+  </error-page>
+  <error-page>
+    <exception-type>
+	          javax.servlet.ServletException
+	    </exception-type>
+    <location>/errorHandler</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.io.IOException</exception-type>
+    <location>/errorHandler</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/errorHandler</location>
+  </error-page>
+</web-app>
